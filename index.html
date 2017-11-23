@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="css/jqTable.css">
+    <style>
+      .p20{
+        padding:20px;
+      }
+      .mt20{
+        margin-top:20px;
+      }
+      .mr10{
+        margin-right:10px;
+      }
+      .hide{
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    <div class="p20">
+      <div class="J-table-main">
+        <h4 class="mt20">表格1:左右固定，高度限制，宽度全部固定--5秒后更新高度为300，8秒后更新数据</h4>
+        <div class="c-table c-table--border J-table-height">
+          <table cellspacing="0" cellpadding="0" border="0" role="c-table" data-height="200">
+            <colgroup>
+              <col name="" width="150">
+              <col name="" width="120">
+              <col name="" width="120">
+              <col name="" width="120">
+              <col name="" width="300">
+              <col name="" width="120">
+              <col name="" width="140">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="">
+                  <div class="cell">日期</div>
+                </th>
+                <th class="">
+                  <div class="cell">姓名</div>
+                </th>
+                <th class="">
+                  <div class="cell">省份</div>
+                </th>
+                <th class="">
+                  <div class="cell">市区</div>
+                </th>
+                <th class="">
+                  <div class="cell">地址</div>
+                </th>
+                <th class="">
+                  <div class="cell">邮编</div>
+                </th>
+                <th class="">
+                  <div class="cell">操作</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-03</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+        
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-02</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+        
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-04</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+        
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-01</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+        
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-08</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+        
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-06</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+        
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-07</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+        
+              </tr>
+        
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <h4>表格2:动态表格，有二级,可展开收起</h4>
+        <div class="c-table J-table c-table--noWrap g-toggleTable--main" data-level="true">
+    
+        </div>
+        
+        <br>
+        <h4>表格3:强制不换行，超出隐藏</h4>
+        <div class="c-table c-table--border c-table--noWrap">
+          <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table2">
+            <colgroup>
+              <col name="" width="150">
+              <col name="" width="120">
+              <col name="" width="120">
+              <col name="" width="120">
+              <col name="" width="">
+              <col name="" width="">
+              <col name="" width="140">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="">
+                  <div class="cell">日期</div>
+                </th>
+                <th class="">
+                  <div class="cell">姓名</div>
+                </th>
+                <th class="">
+                  <div class="cell">省份</div>
+                </th>
+                <th class="">
+                  <div class="cell">市区</div>
+                </th>
+                <th class="">
+                  <div class="cell">地址</div>
+                </th>
+                <th class="">
+                  <div class="cell">邮编</div>
+                </th>
+                <th class="">
+                  <div class="cell">操作</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-03</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄345345434534646464354353454353453453efsdfdsfsdf</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-02</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄345345434534646464354353454353453453efsdfdsfsdf</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-04</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄345345434534646464354353454353453453efsdfdsfsdf</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-01</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄345345434534646464354353454353453453efsdfdsfsdf</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-08</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-06</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-07</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+    
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <h4>表格4:只有右边固定</h4>
+        <div class="c-table c-table--border">
+          <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table2">
+            <colgroup>
+              <col name="" width="150">
+              <col name="" width="120">
+              <col name="" width="120">
+              <col name="" width="120">
+              <col name="" width="">
+              <col name="" width="">
+              <col name="" width="140">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="">
+                  <div class="cell">日期</div>
+                </th>
+                <th class="">
+                  <div class="cell">姓名</div>
+                </th>
+                <th class="">
+                  <div class="cell">省份</div>
+                </th>
+                <th class="">
+                  <div class="cell">市区</div>
+                </th>
+                <th class="">
+                  <div class="cell">地址</div>
+                </th>
+                <th class="">
+                  <div class="cell">邮编</div>
+                </th>
+                <th class="">
+                  <div class="cell">操作</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-03</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-02</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-04</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-01</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-08</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-06</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-07</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+    
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <h4>表格5:条纹</h4>
+        <div class="c-table c-table--border c-table--striped">
+          <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table">
+            <colgroup>
+              <col name="" width="150">
+              <col name="" width="120">
+              <col name="" width="120">
+              <col name="" width="200">
+              <col name="" width="">
+              <col name="" width="">
+              <col name="" width="140">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="">
+                  <div class="cell">日期</div>
+                </th>
+                <th class="">
+                  <div class="cell">姓名</div>
+                </th>
+                <th class="">
+                  <div class="cell">省份</div>
+                </th>
+                <th class="">
+                  <div class="cell">市区</div>
+                </th>
+                <th class="">
+                  <div class="cell">地址</div>
+                </th>
+                <th class="">
+                  <div class="cell">邮编</div>
+                </th>
+                <th class="">
+                  <div class="cell">操作</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-03</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-02</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-04</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-01</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-08</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-06</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-07</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+    
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <h4>表格6:宽度部分（例子是地址，邮箱）自适应，自适应宽度最小默认为100</h4>
+        <div class="c-table c-table--border">
+          <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table">
+            <colgroup>
+              <col name="" width="160">
+              <col name="" width="130">
+              <col name="" width="130">
+              <col name="" width="130">
+              <col name="" width="">
+              <col name="" width="">
+              <col name="" width="150">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="">
+                  <div class="cell">日期</div>
+                </th>
+                <th class="">
+                  <div class="cell">姓名</div>
+                </th>
+                <th class="">
+                  <div class="cell">省份</div>
+                </th>
+                <th class="">
+                  <div class="cell">市区</div>
+                </th>
+                <th class="">
+                  <div class="cell">地址</div>
+                </th>
+                <th class="">
+                  <div class="cell">邮编</div>
+                </th>
+                <th class="">
+                  <div class="cell">操作</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-03</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-02</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-04</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-01</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-08</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-06</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-07</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+    
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <h4>表格7:两级表头，表头不限级数</h4>
+        <div class="c-table c-table--border">
+          <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table">
+            <colgroup>
+              <col name="" width="160">
+              <col name="" width="130">
+              <col name="" width="130">
+              <col name="" width="130">
+              <col name="" width="">
+              <col name="" width="">
+              <col name="" width="150">
+            </colgroup>
+            <thead>
+              <tr>
+                <th colspan="1" rowspan="2" class="">
+                  <div class="cell">日期</div>
+                </th>
+                <th colspan="1" rowspan="2" class="">
+                  <div class="cell">姓名</div>
+                </th>
+                <th colspan="3" rowspan="1" class="">
+                  <div class="cell">地址</div>
+                </th>
+                <th colspan="1" rowspan="2" class="">
+                  <div class="cell">邮编</div>
+                </th>
+                <th colspan="1" rowspan="2" class="">
+                  <div class="cell">操作</div>
+                </th>
+              </tr>
+              <tr>
+                <th class="">
+                  <div class="cell">省份</div>
+                </th>
+                <th class="">
+                  <div class="cell">市区</div>
+                </th>
+                <th class="">
+                  <div class="cell">地址</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-03</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-02</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-04</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-01</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-08</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-06</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">2016-05-07</div>
+                </td>
+                <td class="">
+                  <div class="cell">王小虎</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海</div>
+                </td>
+                <td class="">
+                  <div class="cell">普陀区</div>
+                </td>
+                <td class="">
+                  <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+    
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <h4>表格8:排序</h4>
+        <div class="c-table c-table--border">
+          <table cellspacing="0" cellpadding="0" border="0" role="c-table">
+            <colgroup>
+              <col name="" width="160" data-sort="true">
+              <col name="" width="130" data-sort="true">
+              <col name="" width="130" data-sort="true">
+              <col name="" width="130" data-sort="up">
+              <col name="" width="" data-sort="true">
+              <col name="" width="" data-sort="true">
+              <col name="" width="150">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="">
+                  <div class="cell">
+                    日期
+                  </div>
+                </th>
+                <th class="">
+                  <div class="cell">
+                    数量
+                  </div>
+                </th>
+                <th class="">
+                  <div class="cell">金额</div>
+                </th>
+                <th class="">
+                  <div class="cell">单价</div>
+                </th>
+                <th class="">
+                  <div class="cell">库存</div>
+                </th>
+                <th class="">
+                  <div class="cell">售出</div>
+                </th>
+                <th class="">
+                  <div class="cell">操作</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-03
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">wwee</div>
+                </td>
+                <td class="">
+                  <div class="cell">24566</div>
+                </td>
+                <td class="">
+                  <div class="cell">11</div>
+                </td>
+                <td class="">
+                  <div class="cell">200</div>
+                </td>
+                <td class="">
+                  <div class="cell">300</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-02
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">rrrr</div>
+                </td>
+                <td class="">
+                  <div class="cell">345345435</div>
+                </td>
+                <td class="">
+                  <div class="cell">500</div>
+                </td>
+                <td class="">
+                  <div class="cell">1004</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-04
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">trete</div>
+                </td>
+                <td class="">
+                  <div class="cell">3234325</div>
+                </td>
+                <td class="">
+                  <div class="cell">2233</div>
+                </td>
+                <td class="">
+                  <div class="cell">9900</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-01
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">erwer</div>
+                </td>
+                <td class="">
+                  <div class="cell">167688</div>
+                </td>
+                <td class="">
+                  <div class="cell">455</div>
+                </td>
+                <td class="">
+                  <div class="cell">4545</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-08
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">erewr</div>
+                </td>
+                <td class="">
+                  <div class="cell">456584</div>
+                </td>
+                <td class="">
+                  <div class="cell">345</div>
+                </td>
+                <td class="">
+                  <div class="cell">7655</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-06
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">qqwwe</div>
+                </td>
+                <td class="">
+                  <div class="cell">9678657</div>
+                </td>
+                <td class="">
+                  <div class="cell">656</div>
+                </td>
+                <td class="">
+                  <div class="cell">3676</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-07
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">iuuuu</div>
+                </td>
+                <td class="">
+                  <div class="cell">785</div>
+                </td>
+                <td class="">
+                  <div class="cell">346</div>
+                </td>
+                <td class="">
+                  <div class="cell">9332</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+    
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <h4>表格9:合计</h4>
+        <div class="c-table c-table--border">
+          <table cellspacing="0" cellpadding="0" border="0" role="c-table3" data-height="300">
+            <colgroup>
+              <col name="" width="160">
+              <col name="" width="130">
+              <col name="" width="130" data-total="true">
+              <col name="" width="130" data-total="true">
+              <col name="" width="" data-total="true">
+              <col name="" width="">
+              <col name="" width="150">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="">
+                  <div class="cell">
+                    日期
+                  </div>
+                </th>
+                <th class="">
+                  <div class="cell">
+                    数量
+                  </div>
+                </th>
+                <th class="">
+                  <div class="cell">金额</div>
+                </th>
+                <th class="">
+                  <div class="cell">单价</div>
+                </th>
+                <th class="">
+                  <div class="cell">库存</div>
+                </th>
+                <th class="">
+                  <div class="cell">售出</div>
+                </th>
+                <th class="">
+                  <div class="cell">操作</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-03
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">wwee</div>
+                </td>
+                <td class="">
+                  <div class="cell">24566</div>
+                </td>
+                <td class="">
+                  <div class="cell">11</div>
+                </td>
+                <td class="">
+                  <div class="cell">200</div>
+                </td>
+                <td class="">
+                  <div class="cell">300</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-02
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">rrrr</div>
+                </td>
+                <td class="">
+                  <div class="cell">345345435</div>
+                </td>
+                <td class="">
+                  <div class="cell">500</div>
+                </td>
+                <td class="">
+                  <div class="cell">1004</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-04
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">trete</div>
+                </td>
+                <td class="">
+                  <div class="cell">3234325</div>
+                </td>
+                <td class="">
+                  <div class="cell">2233</div>
+                </td>
+                <td class="">
+                  <div class="cell">9900</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-01
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">erwer</div>
+                </td>
+                <td class="">
+                  <div class="cell">167688</div>
+                </td>
+                <td class="">
+                  <div class="cell">455</div>
+                </td>
+                <td class="">
+                  <div class="cell">4545</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-08
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">erewr</div>
+                </td>
+                <td class="">
+                  <div class="cell">456584</div>
+                </td>
+                <td class="">
+                  <div class="cell">345</div>
+                </td>
+                <td class="">
+                  <div class="cell">7655</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-06
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">qqwwe</div>
+                </td>
+                <td class="">
+                  <div class="cell">9678657</div>
+                </td>
+                <td class="">
+                  <div class="cell">656</div>
+                </td>
+                <td class="">
+                  <div class="cell">3676</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="">
+                  <div class="cell">
+                    2016-05-07
+                  </div>
+                </td>
+                <td class="">
+                  <div class="cell">iuuuu</div>
+                </td>
+                <td class="">
+                  <div class="cell">785</div>
+                </td>
+                <td class="">
+                  <div class="cell">346</div>
+                </td>
+                <td class="">
+                  <div class="cell">9332</div>
+                </td>
+                <td class="">
+                  <div class="cell">200333</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+    
+              </tr>
+    
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <h4>表格10:左侧复选框</h4>
+        <div class="g-selectAll--main">
+          <div class="c-table c-table--border">
+            <table cellspacing="0" cellpadding="0" border="0" role="c-table">
+              <colgroup>
+                <col name="" width="160">
+                <col name="" width="130">
+                <col name="" width="130">
+                <col name="" width="130">
+                <col name="" width="">
+                <col name="" width="">
+                <col name="" width="150">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="">
+                    <div class="cell">
+                      <div class="checkbox form-checkbox">
+                        <label>
+                          <input type="checkbox" class="g-selectAll"> 日期
+                        </label>
+                      </div>
+                    </div>
+                  </th>
+                  <th class="">
+                    <div class="cell">姓名</div>
+                  </th>
+                  <th class="">
+                    <div class="cell">省份</div>
+                  </th>
+                  <th class="">
+                    <div class="cell">市区</div>
+                  </th>
+                  <th class="">
+                    <div class="cell">地址</div>
+                  </th>
+                  <th class="">
+                    <div class="cell">邮编</div>
+                  </th>
+                  <th class="">
+                    <div class="cell">操作</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="">
+                    <div class="cell">
+                      <div class="checkbox form-checkbox">
+                        <label>
+                          <input type="checkbox" class="g-selectAll--input" value="2016-05-03" data-value="1"> 2016-05-03
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="">
+                    <div class="cell">王小虎</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">普陀区</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">200333</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">
+                      <button type="button" class="c-button">移除</button>
+                    </div>
+                  </td>
+    
+                </tr>
+                <tr>
+                  <td class="">
+                    <div class="cell">
+                      <div class="checkbox form-checkbox">
+                        <label>
+                          <input type="checkbox" class="g-selectAll--input" value="2016-05-02" data-value="2"> 2016-05-02
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="">
+                    <div class="cell">王小虎</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">普陀区</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">200333</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">
+                      <button type="button" class="c-button">移除</button>
+                    </div>
+                  </td>
+    
+                </tr>
+                <tr>
+                  <td class="">
+                    <div class="cell">
+                      <div class="checkbox form-checkbox">
+                        <label>
+                          <input type="checkbox" class="g-selectAll--input" value="2016-05-04" data-value="3"> 2016-05-04
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="">
+                    <div class="cell">王小虎</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">普陀区</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">200333</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">
+                      <button type="button" class="c-button">移除</button>
+                    </div>
+                  </td>
+    
+                </tr>
+                <tr>
+                  <td class="">
+                    <div class="cell">
+                      <div class="checkbox form-checkbox">
+                        <label>
+                          <input type="checkbox" class="g-selectAll--input" value="2016-05-01" data-value="4"> 2016-05-01
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="">
+                    <div class="cell">王小虎</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">普陀区</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">200333</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">
+                      <button type="button" class="c-button">移除</button>
+                    </div>
+                  </td>
+    
+                </tr>
+                <tr>
+                  <td class="">
+                    <div class="cell">
+                      <div class="checkbox form-checkbox">
+                        <label>
+                          <input type="checkbox" class="g-selectAll--input" value="2016-05-08" data-value="5"> 2016-05-08
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="">
+                    <div class="cell">王小虎</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">普陀区</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">200333</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">
+                      <button type="button" class="c-button">移除</button>
+                    </div>
+                  </td>
+    
+                </tr>
+                <tr>
+                  <td class="">
+                    <div class="cell">
+                      <div class="checkbox form-checkbox">
+                        <label>
+                          <input type="checkbox" class="g-selectAll--input" value="2016-05-06" data-value="6"> 2016-05-06
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="">
+                    <div class="cell">王小虎</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">普陀区</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">200333</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">
+                      <button type="button" class="c-button">移除</button>
+                    </div>
+                  </td>
+    
+                </tr>
+                <tr>
+                  <td class="">
+                    <div class="cell">
+                      <div class="checkbox form-checkbox">
+                        <label>
+                          <input type="checkbox" class="g-selectAll--input" value="2016-05-07" data-value="8"> 2016-05-07
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="">
+                    <div class="cell">王小虎</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">普陀区</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">上海市普陀区金沙江路 1518 弄</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">200333</div>
+                  </td>
+                  <td class="">
+                    <div class="cell">
+                      <button type="button" class="c-button">移除</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
+          <div>
+            <a class="btn btn-primary btn-xl g-selectAll--btn" href="javascript:;" data-tag="Off">点我点我</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 模版 -->
+    <script id="table-tpl" type="text/html">
+      <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table4">
+        <colgroup>
+          <col name="" width="260">
+          <col name="" width="60">
+          <col name="" width="">
+          <col name="" width="">
+          <col name="" width="">
+          <col name="" width="">
+          <col name="" width="140">
+        </colgroup>
+        <thead>
+          <tr class="g-toggleTable--title">
+            <th class="">
+              <div class="cell"><i class="fa fa-plus-square-o text-muted mr10 g-toggleTable--buttonAll" aria-hidden="true"></i>名称</div>
+            </th>
+            <th class="">
+              <div class="cell">Id</div>
+            </th>
+            <th>
+              <div clas>速率</div>
+            </th>
+            <th>
+              <div clas>累计数量</div>
+            </th>
+            <th>
+              <div clas>今日数量</div>
+            </th>
+            <th>
+              <div clas>小时量</div>
+            </th>
+            <th>
+              <div clas>剩余价值</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{each data}}
+          <tr class="c-table__row c-table__row-{{$index}} g-toggleTable--title">
+            
+            <td class="">
+              <div class="cell"><i class="fa fa-plus-square-o text-muted mr10 g-toggleTable--button" aria-hidden="true"></i> {{$value.name}}</div>
+            </td>
+            <td class="">
+              <div class="cell">{{$value.channelId}}</div>
+            </td>
+            <td>
+              <div class="cell">{{$value.sendRate | toFixed}}</div>
+            </td>
+            <td>
+              <div class="cell">{{$value.totalSend | toFixed}}</div>
+            </td>
+            <td>
+              <div class="cell">{{$value.daySend | toFixed}}</div>
+            </td>
+            <td>
+              <div class="cell">{{$value.hourSend | toFixed}}</div>
+            </td>
+            <td>
+              <div class="cell">{{$value.balance | toFixed}}</div>
+            </td>
+          </tr>
+          {{each $value.senderStatus child i}}
+              {{if ($value.senderStatus.length-1)==i}}
+              <tr class="c-table__row c-table__row-{{$index}} c-table__child c-table__child-default hide">
+              {{else}}
+              <tr class="c-table__row c-table__row-{{$index}} c-table__child c-table__child-default c-table__child-border hide">
+              {{/if}}
+              <td class="">
+                <div class="cell">&nbsp;</div>
+              </td>
+              <td class="">
+                <div class="cell">&nbsp;</div>
+              </td>
+              <td>
+                <div class="cell">{{child.sendRate | toFixed}}</div>
+              </td>
+              <td>
+                <div class="cell">{{child.totalSend | toFixed}}</div>
+              </td>
+              <td>
+                <div class="cell">{{child.daySend | toFixed}}</div>
+              </td>
+              <td>
+                <div class="cell">{{child.hourSend | toFixed}}</div>
+              </td>
+              <td>
+                <div class="cell">&nbsp;</div>
+              </td>
+            </tr>
+          {{/each}}
+          {{/each}}
+
+        </tbody>
+      </table>
+    </script>
+    <!-- 模版2 -->
+    <script id="table-tpl2" type="text/html">
+      <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table" data-height="200">
+        <colgroup>
+          <col name="" width="150">
+          <col name="" width="120">
+          <col name="" width="120">
+          <col name="" width="120">
+          <col name="" width="300">
+          <col name="" width="120">
+          <col name="" width="140">
+        </colgroup>
+        <thead>
+          <tr>
+            <th class="">
+              <div class="cell">日期</div>
+            </th>
+            <th class="">
+              <div class="cell">姓名</div>
+            </th>
+            <th class="">
+              <div class="cell">省份</div>
+            </th>
+            <th class="">
+              <div class="cell">市区</div>
+            </th>
+            <th class="">
+              <div class="cell">地址</div>
+            </th>
+            <th class="">
+              <div class="cell">邮编</div>
+            </th>
+            <th class="">
+              <div class="cell">操作</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{each data}}
+              <tr>
+                <td class="">
+                  <div class="cell">{{$value.time}}</div>
+                </td>
+                <td class="">
+                  <div class="cell">{{$value.name}}</div>
+                </td>
+                <td class="">
+                  <div class="cell">{{$value.province}}</div>
+                </td>
+                <td class="">
+                  <div class="cell">{{$value.city}}</div>
+                </td>
+                <td class="">
+                  <div class="cell">{{$value.address}}</div>
+                </td>
+                <td class="">
+                  <div class="cell">{{$value.code}}</div>
+                </td>
+                <td class="">
+                  <div class="cell">
+                    <button type="button" class="c-button">移除</button>
+                  </div>
+                </td>
+              </tr>
+          {{/each}}
+          
+        </tbody>
+      </table>
+    </script>
+    <script src="js/plugins/jquery.js"></script>
+    <!--开源模版引擎： art-template@4.12.2 for browser | https://github.com/aui/art-template  -->
+    <script src="js/plugins/artTemplate.js"></script>
+    <!--另一个插件，消息提示插件  -->
+    <script src="js/plugins/message.js"></script>
+    <!-- 总引入  -->
+    <script src="js/zipJs/jqTable.all.min.js"></script>
+
+    <!-- 也可分开引入  -->
+    <!-- <script src="js/jqTablePlugins.js"></script>
+    <script src="js/jqTable.js"></script> -->
+    <!-- 临时用的json -->
+    <script src="js/json.js"></script>
+    <script type="text/javascript">
+      $(function(){
+          $('[role="c-table"]').jqTable({
+            fixedLeft: true,
+            fixedRight: true
+          });
+
+          $('[role="c-table2"]').jqTable({
+            fixedRight: true
+          });
+          $('[role="c-table3"]').jqTable({
+            totalString: '--',
+            totalTitle: '总计'
+          });
+          
+          //artTemplate注册过滤器：三位小数
+          template.defaults.imports.toFixed = function (data, num) {
+            data = data ? data : 0;
+            if (data == 0) {
+              return 0;
+            }
+            return Number(data).toFixed(num || 3);
+          };
+
+          //表格1:修改高度值
+          setTimeout(function () {
+            $('.J-table-height').data('height', 300);
+            $(window).trigger('resize');
+          }, 5000);
+          //表格1:更新数据距离
+          setTimeout(function () {
+            var html2 = template('table-tpl2', {data: json2});
+            $('.c-table').eq(0).data('table').updateHtml(html2);
+          }, 8000);
+
+          //表格10:输出选中值
+          $.sub('GSelectAllSuccessOff', function (event, params) {
+            alert('选中' + params.checked.length + '个，具体数据看控制台');
+            console.info('选中值json', params)
+          });
+
+          //表格2渲染html
+          var html = template('table-tpl', { data: json });
+          $('.J-table').append(html);
+
+          //表格2调用
+          $('[role="c-table4"]').jqTable({
+            fixedMinWidth: 140
+          });
+         
+      });
+       
+
+    </script>
+</body>
+</html>
