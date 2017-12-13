@@ -22,10 +22,7 @@ $theme-color: #20A0FF darken(#20A0FF, 6.5%) lighten(#20A0FF, 6.5%);
     }
     table {
         width: 100%;
-    }
-    tr{
-        background: #fff;
-    }
+    } 
     td,
     th {
         height: 40px;
@@ -33,7 +30,9 @@ $theme-color: #20A0FF darken(#20A0FF, 6.5%) lighten(#20A0FF, 6.5%);
         box-sizing: border-box;
         text-overflow: ellipsis;
         vertical-align: middle;
-        position: relative
+        position: relative;
+        background-clip: padding-box;
+        background-color: #fff;
     }
     td.is-right,
     th.is-right {
