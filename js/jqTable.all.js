@@ -589,33 +589,84 @@ $(function () {
     var tableBodyHeight = tableHeight - tableHeaderHeight;
     var $tableFixed = $template.find('.c-table__fixed');
     var $tableFixedRight = $template.find('.c-table__fixed-right');
+    var _config = _this.config;
+    var _fixedLeft = _config.fixedLeft;
+    var _fixedRight = _config.fixedRight;
     if (scrollResult.rowScroll) {
       tableBodyHeight -= JQTABLESCROLLWIDTH;
     }
     // 有固定时,设置高度
-    if (_this.config.fixedRight || _this.config.fixedLeft) {
+    if (_this.config.fixedRight || _fixedLeft) {
       $template.find('.c-table__fixed-body-wrapper').css({
         'max-height': tableBodyHeight + 'px',
         'top': _this.headerHeight + 'px'
       });
       // 设置fixed表格多余列隐藏
+
+      // $tableFixed.find('.c-table__fixed-body-wrapper tr td:not(:first-child):not(.gutter)').addClass('is-hidden');
+      // $tableFixedRight.find('.c-table__fixed-body-wrapper tr td:not(:nth-child(' + colLen + ')):not(.gutter)').addClass('is-hidden');
+    }
+    // 左侧固定列隐藏
+    if (_fixedLeft && _fixedLeft <= 1) {
+      // 单列
       $tableFixed.find('.c-table__fixed-body-wrapper tr td:not(:first-child):not(.gutter)').addClass('is-hidden');
+    } else if (_fixedLeft > 1) {
+      // 多列
+      $.each($tableFixed.find('.c-table__fixed-body-wrapper tr'), function (index, _tr) {
+        $.each($(_tr).find('td:not(.gutter)'), function (index, _td) {
+          if (index >= _fixedLeft) {
+            $(_td).addClass('is-hidden');
+          }
+        })
+      })
+    }
+
+    // 右侧固定列隐藏
+    if (_fixedRight && _fixedRight <= 1) {
+      // 单列
       $tableFixedRight.find('.c-table__fixed-body-wrapper tr td:not(:nth-child(' + colLen + ')):not(.gutter)').addClass('is-hidden');
+    } else if (_fixedRight > 1) {
+      // 多列
+      $.each($tableFixedRight.find('.c-table__fixed-body-wrapper tr'), function (index, _tr) {
+        $.each($(_tr).find('td:not(.gutter)'), function (index, _td) {
+          if (index <= colLen - _fixedRight - 1) {
+            $(_td).addClass('is-hidden');
+          }
+        })
+      })
     }
 
     var fixedHeight = scrollResult.rowScroll ? tableHeight - JQTABLESCROLLWIDTH : tableHeight;
     if (!_this.totalJson.noTotal) {
       fixedHeight -= $tbodyTr.height();
     }
-    if (_this.config.fixedLeft) {
-      var fixedWidth = $tbodyTd.eq(0).width();
+    if (_fixedLeft) {
+      var fixedWidth = 0;
+      // 单列
+      if (_fixedLeft <= 1) {
+        fixedWidth = $tbodyTd.eq(0).width();
+      } else if (_fixedLeft > 1) {
+        //多列
+        for (var index = 0; index < _fixedLeft; index++) {
+          fixedWidth += $tbodyTd.eq(index).width();
+        }
+      }
       $tableFixed.width(fixedWidth).height(fixedHeight);
       $tableFixed.find('table').width(fixedWidth);
     }
 
     if (_this.config.fixedRight) {
       var fixedRight = scrollResult.colScroll ? JQTABLESCROLLWIDTH : 0;
-      var fixedRightWidth = $tbodyTd.eq($tbodyTd.length - 1).width();
+      var fixedRightWidth = 0;
+      if (_fixedRight <= 1) {
+        // 单列
+        fixedRightWidth = $tbodyTd.eq($tbodyTd.length - 1).width();
+      } else if (_fixedRight > 1) {
+        //多列
+        for (var index = 0; index < _fixedRight; index++) {
+          fixedRightWidth += $tbodyTd.eq($tbodyTd.length - 1 - index).width();
+        }
+      }
       //右侧列宽度
       $tableFixedRight.width(fixedRightWidth).height(fixedHeight).css({ right: fixedRight });
       $tableFixedRight.find('table').width(fixedRightWidth);
@@ -693,14 +744,12 @@ $(function () {
     if (scrollResult.colScroll) {
       sumWidth += JQTABLESCROLLWIDTH;
     }
-
     var minWidth = _this.config.fixedMinWidth;
     var arr = [];
     for (var i = 0; i < colNoWidthLen; i++) {
       var _index = colJson.noWidthIndex[i];
       arr.push(colJson.tdWidth[_index]);
     }
-
     var arrWidth = arr.reduce(add, 0);
     var leftwidth = tableWidth - sumWidth + arrWidth - 2;
     //都不够分，最小宽度
@@ -714,7 +763,7 @@ $(function () {
       // }
       setColWidthEach($colgroup, colJson, arr, false);
     }
-    sumWidth = colJson.width.reduce(add, 0);
+    sumWidth = colJson.width.reduce(add, 0) + 2;
     $template.find('.c-table__header-wrapper table').width(sumWidth);
     $template.find('.c-table__body-wrapper table').width(sumWidth);
 
