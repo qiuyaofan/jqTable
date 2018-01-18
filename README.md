@@ -49,6 +49,13 @@
 |data-total="true"| 开启这一列计算总数功能|boolean|
 |data-sort="true"|开启这一列的排序功能|boolean|
 
+#### 方式
+
+|中文名|方法名|举例|
+|----|-----|-----|
+|更新数据|updateHtml| $('.c-table').eq(0).data('table').updateHtml(html)|
+
+注：$('.c-table').eq(0).data('table')为所要更新的表格的实例对象
 
 #### 调用举例
 ```
