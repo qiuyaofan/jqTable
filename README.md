@@ -50,7 +50,7 @@
 |----|-----|-----|-----|
 |data-total="true"| 开启这一列计算总数功能|boolean||
 |data-sort="true"|开启这一列的排序功能|boolean|up（开启且默认为up排序）,down|
-|data-sortconfig="string/function"|添加参数|string或function|string（排序时匹配自动替换为空字符）,function（结合设置调用参数handleSortData才可用）|
+|data-sortconfig="string或function"|添加参数|string或function||
 
 #### 方法
 
@@ -222,3 +222,5 @@ js/json.js ： 例子中用到的json
 ##### 更新日志
 
 2018-01-18 添加多列功能
+
+2018-04-12 添加排序前对数据的处理（用户可使用自定义函数处理，不影响源数据展示，仅对排序有影响）
