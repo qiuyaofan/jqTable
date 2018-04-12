@@ -30,6 +30,7 @@
 |tr.g-toggleTable--title>th i.g-toggleTable--button|操作头-单个切换部分|
 |col data-total="true"|计算总数|
 |col data-sort="true"|添加排序|
+|col data-sortconfig="string/function"|添加参数，可为字符串或函数|
 
 
 #### 参数介绍
@@ -41,13 +42,15 @@
 |fixedMinWidth| 100| 最小宽度|number|
 |totalString| '--'| 计算列总数|string|
 |totalTitle|'总计'| 总数的标题| string |
+| handleSortData |{}| 可对相应列执行自定义处理函数，在排序前| json |
 
 #### 隐藏参数介绍
 
-|参数名|作用|类型|
-|----|-----|-----|
-|data-total="true"| 开启这一列计算总数功能|boolean|
-|data-sort="true"|开启这一列的排序功能|boolean|
+|参数名|作用|类型|可选参数|
+|----|-----|-----|-----|
+|data-total="true"| 开启这一列计算总数功能|boolean||
+|data-sort="true"|开启这一列的排序功能|boolean|up（开启且默认为up排序）,down|
+|data-sortconfig="string/function"|添加参数|string或function|string（排序时匹配自动替换为空字符）,function（结合设置调用参数handleSortData才可用）|
 
 #### 方法
 
@@ -130,6 +133,66 @@ html:
 JS:
 $('[role="c-table"]').jqTable();
 
+```
+
+新增handleSortData使用举例
+
+```
+data-sortconfig="¥":参数handleSortData没定义，则替换字符¥为'',
+data-sortconfig="sortSize":排序前执行handleSortData.sortSize 处理数据，具体数据格式可输出sortSize函数的data查看
+
+HTML:
+<table cellspacing="0" cellpadding="0" border="0" role="c-table-sort">
+  <colgroup>
+    <col name="" width="130" data-sort="up" data-sortconfig="sortSize">
+    <col name="" width="130" data-sort="true" data-sortconfig="¥">
+  </colgroup>
+  <thead>
+    <tr>
+      <th class="">
+        <div class="cell">
+          流量大小
+        </div>
+      </th>
+      <th class="">
+        <div class="cell">金额</div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="">
+        <div class="cell">500M</div>
+      </td>
+      <td class="">
+        <div class="cell">¥3.000</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+JS:
+// 排序表格
+$('[role="c-table-sort"]').jqTable({
+	handleSortData:{
+	  sortSize: sortSize
+	}
+});
+// 排序前对数据进行处理，此处场景是判断流量大小的单位M/G做相应转换
+function sortSize(data){
+    var result = [];
+    var _data, _value;
+    for (var i = 0; i < data.length; i++) {
+      _data = data[i];
+      _value = _data.value;
+      _data.value = _value.indexOf('M') !== -1 ? removeUtil(_value, 'M') : _value.indexOf('G') !== -1 ? removeUtil(_value, 'G') * 1024 : _value;
+      result.push(_data);
+    }
+    return result;
+  }
+  function removeUtil(data,str){
+    return data.replace(new RegExp(str,'gi'), '');
+  }
 ```
 
 #### 例子中用到的JS说明

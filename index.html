@@ -1613,12 +1613,12 @@
         <br>
         <h4>表格8:排序</h4>
         <div class="c-table c-table--border">
-          <table cellspacing="0" cellpadding="0" border="0" role="c-table">
+          <table cellspacing="0" cellpadding="0" border="0" role="c-table-sort">
             <colgroup>
               <col name="" width="160" data-sort="true">
+              <col name="" width="130" data-sort="up" data-sortconfig="sortSize">
+              <col name="" width="130" data-sort="true" data-sortconfig="¥">
               <col name="" width="130" data-sort="true">
-              <col name="" width="130" data-sort="true">
-              <col name="" width="130" data-sort="up">
               <col name="" width="" data-sort="true">
               <col name="" width="" data-sort="true">
               <col name="" width="150">
@@ -1632,7 +1632,7 @@
                 </th>
                 <th class="">
                   <div class="cell">
-                    数量
+                    流量大小
                   </div>
                 </th>
                 <th class="">
@@ -1660,10 +1660,10 @@
                   </div>
                 </td>
                 <td class="">
-                  <div class="cell">wwee</div>
+                  <div class="cell">500M</div>
                 </td>
                 <td class="">
-                  <div class="cell">24566</div>
+                  <div class="cell">¥3.000</div>
                 </td>
                 <td class="">
                   <div class="cell">11</div>
@@ -1688,10 +1688,10 @@
                   </div>
                 </td>
                 <td class="">
-                  <div class="cell">rrrr</div>
+                  <div class="cell">20M</div>
                 </td>
                 <td class="">
-                  <div class="cell">345345435</div>
+                  <div class="cell">¥10.000</div>
                 </td>
                 <td class="">
                   <div class="cell">500</div>
@@ -1716,10 +1716,10 @@
                   </div>
                 </td>
                 <td class="">
-                  <div class="cell">trete</div>
+                  <div class="cell">50M</div>
                 </td>
                 <td class="">
-                  <div class="cell">3234325</div>
+                  <div class="cell">¥66.000</div>
                 </td>
                 <td class="">
                   <div class="cell">2233</div>
@@ -1744,10 +1744,10 @@
                   </div>
                 </td>
                 <td class="">
-                  <div class="cell">erwer</div>
+                  <div class="cell">20M</div>
                 </td>
                 <td class="">
-                  <div class="cell">167688</div>
+                  <div class="cell">¥30.000</div>
                 </td>
                 <td class="">
                   <div class="cell">455</div>
@@ -1772,10 +1772,10 @@
                   </div>
                 </td>
                 <td class="">
-                  <div class="cell">erewr</div>
+                  <div class="cell">10G</div>
                 </td>
                 <td class="">
-                  <div class="cell">456584</div>
+                  <div class="cell">¥888.000</div>
                 </td>
                 <td class="">
                   <div class="cell">345</div>
@@ -1800,10 +1800,10 @@
                   </div>
                 </td>
                 <td class="">
-                  <div class="cell">qqwwe</div>
+                  <div class="cell">2G</div>
                 </td>
                 <td class="">
-                  <div class="cell">9678657</div>
+                  <div class="cell">¥12.000</div>
                 </td>
                 <td class="">
                   <div class="cell">656</div>
@@ -1828,10 +1828,10 @@
                   </div>
                 </td>
                 <td class="">
-                  <div class="cell">iuuuu</div>
+                  <div class="cell">10M</div>
                 </td>
                 <td class="">
-                  <div class="cell">785</div>
+                  <div class="cell">¥8.000</div>
                 </td>
                 <td class="">
                   <div class="cell">346</div>
@@ -2609,6 +2609,28 @@
             fixedMinWidth: 140
           });
          
+          // 排序表格
+          $('[role="c-table-sort"]').jqTable({
+            fixedLeft: true,
+            fixedRight: true,
+            handleSortData:{
+              sortSize: sortSize
+            }
+          });
+          function sortSize(data){
+            var result = [];
+            var _data, _value;
+            for (var i = 0; i < data.length; i++) {
+              _data = data[i];
+              _value = _data.value;
+              _data.value = _value.indexOf('M') !== -1 ? removeUtil(_value, 'M') : _value.indexOf('G') !== -1 ? removeUtil(_value, 'G') * 1024 : _value;
+              result.push(_data);
+            }
+            return result;
+          }
+          function removeUtil(data,str){
+            return data.replace(new RegExp(str,'gi'), '');
+          }
       });
        
 

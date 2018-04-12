@@ -138,6 +138,8 @@ $(function () {
 
 
 
+
+
 //表格主业务：左右固定，排序，计算总数，多表头等
 $(function () {
   var defaultOptions = {
@@ -145,7 +147,8 @@ $(function () {
     fixedRight: false,
     fixedMinWidth: 100,
     totalString: '--',
-    totalTitle: '总计'
+    totalTitle: '总计',
+    handleSortData: {}
   };
   var JQTABLESCROLLWIDTH = getScrollBarWidth();
   var hideColumnTpl = '<div class="hidden-columns">' +
@@ -220,12 +223,12 @@ $(function () {
           if ($(el).hasClass('activeUp')) {
             $(el).find('.c-table__up').trigger('click.jqTable');
             _this.updateEvent();
-            return;
+            return false;
           }
           if ($(el).hasClass('activeDown')) {
             $(el).find('.c-table__down').trigger('click.jqTable');
             _this.updateEvent();
-            return;
+            return false;
           }
         });
       }
@@ -321,8 +324,6 @@ $(function () {
   function sortFn($this, isDown) {
     var className = isDown ? 'activeDown' : 'activeUp';
     //切换class
-    $('.c-table__sort').removeClass('activeUp activeDown');
-    $this.parents('.c-table__sort').addClass(className);
     var $template = $this.parents('.c-table--main');
     var _this = $template.data('table');
     var $fixedTbody = $template.find('.c-table__fixed-body-wrapper tbody');
@@ -331,6 +332,15 @@ $(function () {
     var $th = $this.parents('thead').find('th');
     var sortJson = [];
     var index = $th.index($this.parents('th'));
+    //切换class
+    $template.find('.c-table__sort').removeClass('activeUp activeDown');
+    $template.find('.c-table__fixed-header-wrapper th').eq(index).find('.c-table__sort').addClass(className);
+    $template.find('.c-table__header-wrapper th').eq(index).find('.c-table__sort').addClass(className);
+    // 长度小于1不排序
+    if ($tr.length <= 1) {
+      return;
+    }
+
     //渲染排序所需的json
     $.each($tr, function (_index, el) {
       var _temp = {};
@@ -338,6 +348,19 @@ $(function () {
       _temp.value = $(el).find('td').eq(index).text().trim();
       sortJson.push(_temp);
     });
+    var handleSortDataJson = _this.config.handleSortData;
+    var sortConfig = _this.sortConfig;
+    // 判断是否存在排序特殊配置
+    if (sortConfig[index]) {
+      if (sortConfig[index] && handleSortDataJson[sortConfig[index]] && typeof (handleSortDataJson[sortConfig[index]]) === 'function') {
+        // 判断排序参数为函数，且在config中注册过
+        sortJson = handleSortDataJson[sortConfig[index]](sortJson);
+      } else {
+        // 参数为字符串替换
+        sortJson = deleteMatchStr(sortJson, sortConfig[index]);
+      }
+    }
+
     //排序
     sortJson = order(sortJson, 'value', isDown);
     // 渲染排序好的html
@@ -345,6 +368,19 @@ $(function () {
     $.each($fixedTbody, function (index, fixedTbody) {
       sortRender(_this, $(fixedTbody), sortJson);
     });
+  }
+
+  // 字符串替换
+  function deleteMatchStr(data, str) {
+    var result = [];
+    var _data;
+    var reg = new RegExp(str, 'g');
+    for (var i = 0; i < data.length; i++) {
+      _data = data[i];
+      _data.value = (_data.value + '').replace(reg, '');
+      result.push(_data);
+    }
+    return result;
   }
   // 渲染排序好的html
   function sortRender(_this, $tbody, sortJson) {
@@ -398,6 +434,7 @@ $(function () {
     if (result.noSort) {
       return;
     }
+    _this.sortConfig = result.sortConfig;
     var sortArr = result.sort;
     var $th = $thead.find('thead th');
     for (var i = 0, len = sortArr.length; i < len; i++) {
@@ -867,14 +904,13 @@ $(function () {
   }
   //获取Col宽度,是否排序
   function getColSort(_this, $thead) {
-    // var $thead = _this.$container.find('.c-table__header-wrapper table');
     var $col = $thead.find('colgroup>col');
     var result = getColFn('sort', $col);
-    var sort = result.demo;
-    var noSort = result.nodemo;
+    var sortconfig = getColFn('sortconfig', $col);
     return {
-      sort: sort,
-      noSort: noSort
+      sort: result.demo,
+      noSort: result.nodemo,
+      sortConfig: sortconfig.demo
     };
   }
   //获取Col是否总计
