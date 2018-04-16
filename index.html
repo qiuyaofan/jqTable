@@ -251,15 +251,15 @@
         </div>
         <br>
         <h4>固定多列</h4>
-        <div class="c-table c-table--border c-table--fit">
+        <div class="c-table c-table--noWrap c-table--border c-table--fit">
           <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table1">
             <colgroup>
               <col name="" width="150">
+              <col name="" width="">
               <col name="" width="120">
-              <col name="" width="120">
-              <col name="" width="120">
+              <col name="" width="">
               <col name="" width="450">
-              <col name="" width="150">
+              <col name="" width="">
               <col name="" width="140">
             </colgroup>
             <thead>
@@ -284,7 +284,7 @@
                 </th>
                 <th colspan="1" rowspan="1" class="">
                   <div class="cell">操作</div>
-                </th>
+                </th
               </tr>
             </thead>
             <tbody>
@@ -312,14 +312,13 @@
                     <button type="button" class="c-button">移除</button>
                   </div>
                 </td>
-        
               </tr>
               <tr class="c-table__row">
                 <td class="">
                   <div class="cell">2016-05-02</div>
                 </td>
                 <td class="">
-                  <div class="cell">王小虎</div>
+                  <div class="cell">王小虎测试测试测试测试宽度</div>
                 </td>
                 <td class="">
                   <div class="cell">上海</div>
@@ -338,14 +337,13 @@
                     <button type="button" class="c-button">移除</button>
                   </div>
                 </td>
-        
               </tr>
               <tr class="c-table__row">
                 <td class="">
                   <div class="cell">2016-05-04</div>
                 </td>
                 <td class="">
-                  <div class="cell">王小虎</div>
+                  <div class="cell">王小虎dvgdfsdfdsfdfdfdfdsf</div>
                 </td>
                 <td class="">
                   <div class="cell">上海</div>
@@ -364,7 +362,6 @@
                     <button type="button" class="c-button">移除</button>
                   </div>
                 </td>
-        
               </tr>
               <tr class="c-table__row">
                 <td class="">
@@ -390,7 +387,6 @@
                     <button type="button" class="c-button">移除</button>
                   </div>
                 </td>
-        
               </tr>
               <tr class="c-table__row">
                 <td class="">
@@ -416,7 +412,6 @@
                     <button type="button" class="c-button">移除</button>
                   </div>
                 </td>
-        
               </tr>
               <tr class="c-table__row">
                 <td class="">
@@ -442,7 +437,6 @@
                     <button type="button" class="c-button">移除</button>
                   </div>
                 </td>
-        
               </tr>
               <tr class="c-table__row">
                 <td class="">
@@ -468,9 +462,7 @@
                     <button type="button" class="c-button">移除</button>
                   </div>
                 </td>
-        
               </tr>
-        
             </tbody>
           </table>
         </div>
@@ -481,7 +473,7 @@
         </div>
         
         <br>
-        <h4>表格3:强制不换行，超出隐藏</h4>
+        <h4>表格3:强制不换行，当位置不够显示时，超出500（最大宽度，设置参数为fixedMaxWidth:500）的列宽度设为500，超出隐藏</h4>
         <div class="c-table c-table--border c-table--noWrap">
           <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table2">
             <colgroup>
@@ -2557,18 +2549,20 @@
     <script src="js/json.js"></script>
     <script type="text/javascript">
       $(function(){
-          $('[role="c-table"]').jqTable({
-            fixedLeft: true,
+          $('[role="c-table2"]').jqTable({
             fixedRight: true
           });
           // 固定多列
           $('[role="c-table1"]').jqTable({
             fixedLeft: 2,
             fixedRight: 2
-          }); 
-          $('[role="c-table2"]').jqTable({
+          });
+          $('[role="c-table"]').jqTable({
+            fixedLeft: true,
             fixedRight: true
           });
+           
+          
           $('[role="c-table3"]').jqTable({
             totalString: '--',
             totalTitle: '总计'

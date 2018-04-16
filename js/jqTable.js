@@ -1,25 +1,16 @@
-
-
 //表格主业务：左右固定，排序，计算总数，多表头等
 $(function () {
   var defaultOptions = {
     fixedLeft: false,
     fixedRight: false,
     fixedMinWidth: 100,
+    fixedMaxWidth: 500,
     totalString: '--',
     totalTitle: '总计',
-    handleSortData:{}
+    handleSortData: {},
+    noWidthColAdaptClient: false
   };
   var JQTABLESCROLLWIDTH = getScrollBarWidth();
-  var hideColumnTpl = '<div class="hidden-columns">' +
-    '<div></div>' +
-    '<div></div>' +
-    '<div></div>' +
-    '<div></div>' +
-    '<div></div>' +
-    '<div></div>' +
-    '<div></div>' +
-    '</div>';
   //排序模版
   var SORTTPL = '<div class="c-table__sort {{class}}">' +
     '<i class="fa fa-long-arrow-down c-table__down" aria-hidden="true"></i>' +
@@ -40,7 +31,7 @@ $(function () {
     '{{fixedWrapper}}' +
     '</div>';
   var TEMPLATETPL = '<div class="c-table--main" style="width: 100%;">' +
-    '{{hideColumn}}' +
+    // '{{hideColumn}}' +
     '<div class="c-table__header-wrapper"> ' +
     '{{theadHtml}}' +
     '</div>' +
@@ -104,7 +95,8 @@ $(function () {
         var $table = $this.parents('.c-table').last();
         $template.addClass($table.attr('class'));
         $table.removeAttr('class');
-        $this.after($template).remove();
+        $this.after($template);
+        $this.remove();
         _this.$table = $template;
         _this.$table.data('height', _this.tableHeight);
       } else {
@@ -112,8 +104,11 @@ $(function () {
         _this.$table.html($template.html());
       }
 
-      //获取头部信息
+      // 获取头部信息
+      // 兼容等于宽度百分百时col不设置width为0
+      $template.find('table').addClass('c-table--noWp100');
       _this.colJson = getColInfo(_this);
+      $template.find('table').removeClass('c-table--noWp100');
       _this.totalJson = getColTotal(_this);
       _this.fixedWidth = _this.colJson.isAllWidth;
       _this.headerHeight = getHeaderHeight(_this.$table);
@@ -229,15 +224,15 @@ $(function () {
       sortRender(_this, $(fixedTbody), sortJson);
     });
   }
-  
+
   // 字符串替换
-  function deleteMatchStr(data,str){
-    var result=[];
+  function deleteMatchStr(data, str) {
+    var result = [];
     var _data;
     var reg = new RegExp(str, 'g');
     for (var i = 0; i < data.length; i++) {
-      _data=data[i];
-      _data.value=(_data.value+'').replace(reg, '');
+      _data = data[i];
+      _data.value = (_data.value + '').replace(reg, '');
       result.push(_data);
     }
     return result;
@@ -327,7 +322,7 @@ $(function () {
     var fixedWrapper = FIXEDWRAPPERTPL.replace('{{theadHtml}}', theadHtml).replace('{{tbodyHtml}}', tbodyHtml);
     var fixedLeft = _this.config.fixedLeft ? FIXEDWRAPPERTPLLEFT.replace(/{{fixedWrapper}}/g, fixedWrapper) : '';
     var fixedRight = _this.config.fixedRight ? FIXEDWRAPPERTPLRIGHT.replace(/{{fixedWrapper}}/g, fixedWrapper) : '';
-    var template = TEMPLATETPL.replace('{{hideColumn}}', hideColumnTpl).replace('{{theadHtml}}', theadHtml).replace('{{tbodyHtml}}', tbodyHtml).replace('{{fixedLeft}}', fixedLeft).replace('{{fixedRight}}', fixedRight);
+    var template = TEMPLATETPL.replace('{{theadHtml}}', theadHtml).replace('{{tbodyHtml}}', tbodyHtml).replace('{{fixedLeft}}', fixedLeft).replace('{{fixedRight}}', fixedRight);
     var $template = $(template);
     return $template;
   }
@@ -642,6 +637,7 @@ $(function () {
       sumWidth += JQTABLESCROLLWIDTH;
     }
     var minWidth = _this.config.fixedMinWidth;
+    var noWidthColAdaptClient = _this.config.noWidthColAdaptClient;
     var arr = [];
     for (var i = 0; i < colNoWidthLen; i++) {
       var _index = colJson.noWidthIndex[i];
@@ -656,7 +652,7 @@ $(function () {
       // if (arr.length === 1 && arr[0]==100){
       //   arr[0] = leftwidth;
       // }else{
-      arr = getColgroupWidth(arr, leftwidth, minWidth, arr.length);
+      arr = getColgroupWidth(arr, leftwidth, minWidth, arr.length, noWidthColAdaptClient);
       // }
       setColWidthEach($colgroup, colJson, arr, false);
     }
@@ -670,7 +666,7 @@ $(function () {
     var colNoWidthLen = colJson.noWidthIndex.length;
     for (var j = 0; j < colNoWidthLen; j++) {
       var _index = colJson.noWidthIndex[j];
-      var _width = minWidth || arr[j];
+      var _width = minWidth && arr[j] < minWidth ? minWidth : arr[j];
       colJson.width[_index] = _width;
       $.each($colgroup, function (index, el) {
         $(el).find('col').eq(_index).attr('width', _width);
@@ -678,40 +674,45 @@ $(function () {
     }
   }
   //获取自适应的最终宽度
-  function getColgroupWidth(arr, width, minwidth, length) {
+  function getColgroupWidth(arr, width, minwidth, length, adaptClient) {
     var totalWidth = arr.reduce(addNum, 0);
     var distance = (width - totalWidth) / length;
-    //操作distance的次数
-    var len = 0;
-    //有多余的宽度
-    var distanceLen = 0;
-    //剩余可操作的数
-    var countLen = 0;
-    if (distance > 0) {
-      for (var i = 0; i < arr.length; i++) {
-        arr[i] = arr[i] + distance;
-        arr[i] < minwidth ? arr[i] = minwidth : countLen++;
-      }
+    // 不自适应，一旦<0就返回，不做操作
+    if (!adaptClient && distance < 0) {
+      return arr;
     } else {
-      for (var j = 0; j < arr.length; j++) {
-        if (arr[j] < minwidth) {
-          arr[j] = minwidth;
-        } else if (arr[j] > minwidth) {
-          var _width = arr[j] + distance;
-          if (_width > minwidth) {
-            countLen++;
+      //操作distance的次数
+      var len = 0;
+      //有多余的宽度
+      var distanceLen = 0;
+      //剩余可操作的数
+      var countLen = 0;
+      if (distance > 0) {
+        for (var i = 0; i < arr.length; i++) {
+          arr[i] = arr[i] + distance;
+          arr[i] < minwidth ? arr[i] = minwidth : countLen++;
+        }
+      } else {
+        for (var j = 0; j < arr.length; j++) {
+          if (arr[j] < minwidth) {
+            arr[j] = minwidth;
+          } else if (arr[j] > minwidth) {
+            var _width = arr[j] + distance;
+            if (_width > minwidth) {
+              countLen++;
+            }
+            arr[j] = _width < minwidth ? minwidth : _width;
           }
-          arr[j] = _width < minwidth ? minwidth : _width;
         }
       }
+      totalWidth = arr.reduce(addNum, 0);
+      //操作了distance的次数不够需要的 || 有比最小宽度小的，多出了差值且有数可以补
+      // if ((len < length && countLen > 0) || (distanceLen && countLen > 0)) {
+      if (Math.floor(totalWidth) !== Math.floor(width)) {
+        getColgroupWidth(arr, width, minwidth, countLen, adaptClient);
+      }
+      return arr;
     }
-    totalWidth = arr.reduce(addNum, 0);
-    //操作了distance的次数不够需要的 || 有比最小宽度小的，多出了差值且有数可以补
-    // if ((len < length && countLen > 0) || (distanceLen && countLen > 0)) {
-    if (Math.floor(totalWidth) !== Math.floor(width)) {
-      getColgroupWidth(arr, width, minwidth, countLen);
-    }
-    return arr;
   }
   //distance>0
   // function getColgroupWidth(arr, width, minwidth, length) {
@@ -804,7 +805,13 @@ $(function () {
       nodemo: nodemo
     };
   }
-  //获取Col宽度
+  // 对比th和td宽度，返回列最终宽度
+  function getEachColWidth($tds, $ths, index) {
+    var tdWidth = $tds.eq(index).width();
+    var thWidth = $ths.eq(index).width();
+    return tdWidth > thWidth ? tdWidth : thWidth;
+  }
+  // 获取Col宽度
   function getColInfo(_this) {
     _this.$table.addClass('c-table--noWrap-init');
     var $thead = _this.$table.find('.c-table__header-wrapper table');
@@ -823,16 +830,18 @@ $(function () {
     var hasWidthArr = [];
 
     var isAllWidth = true;
-    var $tds = theadWidth > tbodyWidth ? $thead.find('tr').eq(0).find('th') : $tbody.find('tr').eq(0).find('td');
+    var $tds = $tbody.find('tr').eq(0).find('td');
+    var $ths = $thead.find('tr').eq(0).find('th');
     $col = $col.not('[name=gutter]');
     $.each($col, function (_index, el) {
       var _width = $(el).attr('width') ? Number($(el).attr('width')) : 0;
+      _width = judgeMaxWidth(_this, _width);
       width.push(_width);
       if (_width) {
         hasWidthArr.push(_width);
         tdWidth.push(_width);
       } else {
-        var _tdsWidth = $tds.eq(_index).find('.cell').width() + 1;
+        var _tdsWidth = judgeMaxWidth(_this, getEachColWidth($tds, $ths, _index) + 1);
         // var _tdWidth = _tdsWidth < _this.config.fixedMinWidth ? _this.config.fixedMinWidth : _tdsWidth;
         isAllWidth = false;
         noWidthIndex.push(_index);
@@ -848,6 +857,11 @@ $(function () {
       realTotalWidth: realTotalWidth,
       tdWidth: tdWidth
     };
+  }
+  // 判断大于最大宽度
+  function judgeMaxWidth(_this, width) {
+    var _width = width > _this.config.fixedMaxWidth ? _this.config.fixedMaxWidth : width;
+    return _width;
   }
   //判断滚动
   function judgeIsScroll($bodywrapper, $tbody, $template, colJson) {
