@@ -95,13 +95,13 @@ $(function () {
         var $table = $this.parents('.c-table').last();
         $template.addClass($table.attr('class'));
         $table.removeAttr('class');
-        $this.after($template);
-        $this.remove();
+        $this.after($template).remove();
         _this.$table = $template;
         _this.$table.data('height', _this.tableHeight);
       } else {
         // 更新表格数据
         _this.$table.html($template.html());
+        $template = _this.$table;
       }
 
       // 获取头部信息
