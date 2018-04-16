@@ -40,9 +40,11 @@
 |fixedLeft| false| 左边固定|boolean|
 |fixedRight| false| 右边固定|boolean|
 |fixedMinWidth| 100| 最小宽度|number|
+| fixedMaxWidth |500| 最大宽度|number|
 |totalString| '--'| 计算列总数|string|
 |totalTitle|'总计'| 总数的标题| string |
 | handleSortData |{}| 可对相应列执行自定义处理函数，在排序前| json |
+| noWidthColAdaptClient |false|设置自适应宽度列是否根据窗口变小改变而减小（建议设为false）| json |
 
 #### 隐藏参数介绍
 
@@ -221,6 +223,9 @@ js/json.js ： 例子中用到的json
 
 ##### 更新日志
 
-2018-01-18 添加多列功能
+2018-04-16 优化自适应列的宽度计算方式，默认窗口宽度不够时，列最大宽度为500，窗口缩小，列的最小宽度大于最小宽度，小于最大宽度，正常情况下为原始宽度
 
 2018-04-12 添加排序前对数据的处理（用户可使用自定义函数处理，不影响源数据展示，仅对排序有影响）
+
+2018-01-18 添加多列功能
+
