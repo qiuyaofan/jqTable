@@ -20,8 +20,8 @@ $theme-color: #20A0FF darken(#20A0FF, 6.5%) lighten(#20A0FF, 6.5%);
     .el-tooltip.cell {
         white-space: nowrap
     }
-    table{
-        width:100%;
+    table {
+        width: 100%;
     }
     table.c-table--noWp100 {
         width: auto;
@@ -350,33 +350,46 @@ $theme-color: #20A0FF darken(#20A0FF, 6.5%) lighten(#20A0FF, 6.5%);
             }
         }
         .c-table__sort {
-            display: inline-block;
-            font-size: 0;
-            .c-table__up {
-                padding-right: 7px;
-                padding-left: 2px;
-            }
-            .c-table__down {
-                padding-left: 7px;
-                padding-right: 2px;
-            }
+            margin-left: 4px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            height: 34px;
+            width: 14px;
+            vertical-align: middle;
+            cursor: pointer;
+            overflow: initial;
+            position: relative;
             .c-table__up,
             .c-table__down {
-                color: #999;
-                font-size: 14px;
                 cursor: pointer;
+                position: absolute;
+                width: 0;
+                height: 0;
+                border: 5px solid transparent;
+            }
+            .c-table__up {
+                bottom: 7px;
+                border-top-color: #999;
                 &:hover {
-                    color: nth($theme-color, 1);
+                    border-top-color: nth($theme-color, 1);
+                }
+            }
+            .c-table__down {
+                top: 5px;
+                border-bottom-color: #999;
+                &:hover {
+                    border-bottom-color: nth($theme-color, 1);
                 }
             }
             &.activeUp {
                 .c-table__up {
-                    color: nth($theme-color, 1);
+                    border-top-color: nth($theme-color, 1);
                 }
             }
             &.activeDown {
                 .c-table__down {
-                    color: nth($theme-color, 1);
+                    border-bottom-color: nth($theme-color, 1);
                 }
             }
         }

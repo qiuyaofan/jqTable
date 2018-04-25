@@ -152,8 +152,8 @@ $(function () {
   var JQTABLESCROLLWIDTH = getScrollBarWidth();
   //排序模版
   var SORTTPL = '<div class="c-table__sort {{class}}">' +
-    '<i class="fa fa-long-arrow-down c-table__down" aria-hidden="true"></i>' +
-    '<i class="fa fa-long-arrow-up c-table__up" aria-hidden="true"></i>' +
+    '<i class="c-table__down" aria-hidden="true"></i>' +
+    '<i class="c-table__up" aria-hidden="true"></i>' +
     '</div >';
   // 拼接模版
   var FIXEDWRAPPERTPL = '<div class="c-table__fixed-header-wrapper">' +
