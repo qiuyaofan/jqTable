@@ -63,6 +63,7 @@ $(function () {
   $.extend(jqTable.prototype, {
     //$this:要复制的表格html
     init: function ($this) {
+      this.isSafria = /version\/([\d.]+).*safari/i.test(navigator.userAgent);
       // 渲染表格
       this.render($this);
       // 添加事件
@@ -478,6 +479,7 @@ $(function () {
     var $tbodyTd = $tbodyTr.find('td:not(.gutter)');
     var tableHeaderHeight = _this.headerHeight;
     var tableHeight = $template.height();
+    var tableWidth = $template.width();
     var tableBodyHeight = tableHeight - tableHeaderHeight;
     var $tableFixed = $template.find('.c-table__fixed');
     var $tableFixedRight = $template.find('.c-table__fixed-right');
@@ -493,10 +495,6 @@ $(function () {
         'max-height': tableBodyHeight + 'px',
         'top': _this.headerHeight + 'px'
       });
-      // 设置fixed表格多余列隐藏
-
-      // $tableFixed.find('.c-table__fixed-body-wrapper tr td:not(:first-child):not(.gutter)').addClass('is-hidden');
-      // $tableFixedRight.find('.c-table__fixed-body-wrapper tr td:not(:nth-child(' + colLen + ')):not(.gutter)').addClass('is-hidden');
     }
     // 左侧固定列隐藏
     if (_fixedLeft && _fixedLeft <= 1) {
@@ -544,7 +542,10 @@ $(function () {
         }
       }
       $tableFixed.width(fixedWidth).height(fixedHeight);
-      $tableFixed.find('table').width(fixedWidth);
+      // 不是全部固定列，在resetColgroupWidth设置宽度
+      if (_this.colJson.isAllWidth===true){
+        $tableFixed.find('table').width(tableWidth);
+      }
     }
 
     if (_this.config.fixedRight) {
@@ -561,7 +562,10 @@ $(function () {
       }
       //右侧列宽度
       $tableFixedRight.width(fixedRightWidth).height(fixedHeight).css({ right: fixedRight });
-      $tableFixedRight.find('table').width(fixedRightWidth);
+      // 不是全部固定列，在resetColgroupWidth设置宽度
+      if (_this.colJson.isAllWidth === true) {
+        $tableFixedRight.find('table').width(tableWidth);
+      }
     }
   }
 
@@ -581,15 +585,19 @@ $(function () {
     var $thead = $template.find('.c-table__header-wrapper table');
     var $tbody = $template.find('.c-table__body-wrapper table');
     var isGutter = $thead.find('.gutter').length;
-    //有垂直滚动条&&没有gutter，添加
-    if (scrollResult.colScroll && !isGutter) {
-      $thead.find('colgroup').append(GUTTERWIDTHTPL);
-      $thead.find('thead tr').append(GUTTERWIDTHTPL);
-      // $tbody.find('colgroup').append(GUTTERTPL);
-      $tbody.find('tbody tr').append(GUTTERTPL);
-    }
-    //没有垂直滚动条&&有gutter，去除
-    if (!scrollResult.colScroll && isGutter) {
+    // //有垂直滚动条&&没有gutter，添加
+    // if (scrollResult.colScroll && !isGutter) {
+    //   $thead.find('colgroup').append(GUTTERWIDTHTPL);
+    //   $thead.find('thead tr').append(GUTTERWIDTHTPL);
+    //   // $tbody.find('colgroup').append(GUTTERTPL);
+    //   $tbody.find('tbody tr').append(GUTTERTPL);
+    // }
+    // //没有垂直滚动条&&有gutter，去除
+    // if (!scrollResult.colScroll && isGutter) {
+    //   $thead.find('.gutter').remove();
+    //   $tbody.find('.gutter').remove();
+    // }
+    if (isGutter) {
       $thead.find('.gutter').remove();
       $tbody.find('.gutter').remove();
     }
@@ -647,29 +655,65 @@ $(function () {
     var leftwidth = tableWidth - sumWidth + arrWidth - 2;
     //都不够分，最小宽度
     if (arr.length * minWidth >= leftwidth) {
-      setColWidthEach($colgroup, colJson, arr, minWidth);
+      setColWidthEach(_this,$colgroup, colJson, arr, minWidth);
     } else {
-      // if (arr.length === 1 && arr[0]==100){
-      //   arr[0] = leftwidth;
-      // }else{
       arr = getColgroupWidth(arr, leftwidth, minWidth, arr.length, noWidthColAdaptClient);
-      // }
-      setColWidthEach($colgroup, colJson, arr, false);
+      setColWidthEach(_this,$colgroup, colJson, arr, false);
     }
     sumWidth = colJson.width.reduce(add, 0) + 2;
     $template.find('.c-table__header-wrapper table').width(sumWidth);
     $template.find('.c-table__body-wrapper table').width(sumWidth);
-
+    $template.find('.c-table__fixed-header-wrapper table').width(sumWidth-2);
+    $template.find('.c-table__fixed-body-wrapper table').width(sumWidth-2);
   }
   //循环设置自适应col宽度
-  function setColWidthEach($colgroup, colJson, arr, minWidth) {
+  function setColWidthEach(_this,$colgroup, colJson, arr, minWidth) {
     var colNoWidthLen = colJson.noWidthIndex.length;
+    var overSizeColArr = [];
     for (var j = 0; j < colNoWidthLen; j++) {
       var _index = colJson.noWidthIndex[j];
+      if(/^\d+\.\d{4,}$/.test(arr[j]+'')){
+        arr[j]=Number(arr[j]).toFixed(3);
+      }
       var _width = minWidth && arr[j] < minWidth ? minWidth : arr[j];
-      colJson.width[_index] = _width;
+      colJson.width[_index] = Number(_width);
+      // 超过最大宽度
+      if (_width >= _this.config.fixedMaxWidth) {
+        overSizeColArr.push(_index);
+      }
       $.each($colgroup, function (index, el) {
         $(el).find('col').eq(_index).attr('width', _width);
+      });
+    }
+    setSafriaCellWidthEach(_this,$colgroup,colJson,overSizeColArr);
+  }
+  // 兼容safria在td宽度大于col时，col的width失效
+  function setSafriaCellWidthEach(_this,$colgroup,colJson,arr){
+    // safria&&超过最大宽度
+    if (_this.isSafria) {
+      var noIndexArr = colJson.noWidthIndex;
+      if(arr.length > 0){
+        setSafriaCellWidthEachFn($colgroup, colJson, arr,true);
+        // 去掉设置高度的
+        noIndexArr = noIndexArr.filter(function (item) {
+          return arr.indexOf(item) === -1;
+        });
+      }
+      // 剩余宽度设为auto-针对resize
+      if (noIndexArr.length){
+        setSafriaCellWidthEachFn($colgroup, colJson, noIndexArr,false);
+      }
+    }
+  }
+  function setSafriaCellWidthEachFn($colgroup, colJson, arr,isOverSize){
+    for (var i = 0; i < arr.length; i++) {
+      var _index = arr[i];
+      $.each($colgroup, function (i1, el) {
+        var $tr = $(el).parents('table').find('tbody tr');
+        var _width = isOverSize?colJson.width[_index] - 36:'auto';
+        $.each($tr, function (i2, _tr) {
+          $(_tr).find('td').eq(_index).find('.cell').width(_width);
+        });
       });
     }
   }
