@@ -1,5 +1,5 @@
 $(function () {
-  var iconClass = ['fa-plus-square-o', 'fa-minus-square-o'];
+  var iconClass = ['icon-right', 'icon-down'];
   //有层级关系
   var $body = $('body');
   //点击层级表格title展开收起（例子：监控页面）
@@ -22,7 +22,7 @@ $(function () {
         $(el).toggleClass('hide');
       }
     });
-    $this.find('i.fa').toggleClass(iconClass.join(' '));
+    $this.find('.g-toggleTable--button').toggleClass(iconClass.join(' '));
     singleChange( $parent);
     
   });
