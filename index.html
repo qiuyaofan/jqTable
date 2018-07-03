@@ -22,7 +22,7 @@
       }
     </style>
 </head>
-<body>
+<body style="padding-left:9px;">
     <div class="p20">
       <div class="J-table-main">
         <h4 class="mt20">表格1:左右固定，高度限制，宽度全部固定--5秒后更新高度为300，8秒后更新数据</h4>
@@ -252,7 +252,7 @@
         <br>
         <h4>固定多列</h4>
         <div class="c-table c-table--noWrap c-table--border c-table--fit">
-          <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table1">
+          <table cellspacing="0" cellpadding="0" border="0" class="" role="c-table1" data-height="200">
             <colgroup>
               <col name="" width="150">
               <col name="" width="">
@@ -2538,6 +2538,8 @@
     <script src="js/plugins/artTemplate.js"></script>
     <!--另一个插件，消息提示插件  -->
     <script src="js/plugins/message.js"></script>
+    <!-- 必要插件：固定列滚动需要用到，鼠标滚动兼容多浏览器 -->
+    <script src="js/jquery.mousewheel.min.js"></script>
     <!-- 总引入  -->
     <script src="js/zipJs/jqTable.all.min.js"></script>
 
